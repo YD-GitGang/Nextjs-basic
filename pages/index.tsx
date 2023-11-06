@@ -1,9 +1,12 @@
 import Head from 'next/head'
-import { useState } from 'react'
+import Link from 'next/link'
+import { useState, useContext } from 'react'
 import type { NextPage } from 'next'
+import { CounterContext } from '../components/CounterContext'
 
 const IndexPage: NextPage = () => {
-    const [count, setCount] = useState<number>(0)
+    const {count, setCount} = useContext(CounterContext)
+
     return (
         <>
             <Head>
@@ -13,6 +16,9 @@ const IndexPage: NextPage = () => {
                 <p>Counter: {count}</p>
                 <button onClick={() => setCount((c: number) => c + 1)}>Increase</button>
                 <button onClick={() => setCount((c: number) => c - 1)}>Decrease</button>
+                <p>
+                    <Link href="/input">input</Link>
+                </p>
             </main>
         </>
     )
